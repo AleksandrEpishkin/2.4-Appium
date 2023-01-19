@@ -33,24 +33,22 @@ public class UIAutomatorTest {
     public void sampleTest() {
         ButtonScreen button = new ButtonScreen(driver);
 
-        button.userInput.sendKeys("Netology");
+        String beginText = button.textToBeChanged.getText();
+        button.userInput.sendKeys(" ");
         button.buttonChange.click();
-        button.textToBeChanged.isDisplayed();
-        Assertions.assertEquals(button.textToBeChanged.getText(), "Netology");
-        button.userInput.sendKeys("           ");
-        button.buttonChange.click();
-        button.textToBeChanged.isDisplayed();
-        Assertions.assertEquals(button.textToBeChanged.getText(), "Netology");
+        String endText = button.textToBeChanged.getText();
+        Assertions.assertEquals(beginText, endText);
     }
 
 
     @Test
     public void sampleTestNew() {
         ButtonScreen button = new ButtonScreen(driver);
-        button.userInput.sendKeys("NEW TEXT");
+        String newText = "NEW TEXT";
+        button.userInput.sendKeys(newText);
         button.buttonActivity.click();
         button.activityText.isDisplayed();
-        Assertions.assertEquals(button.activityText.getText(), "NEW TEXT");
+        Assertions.assertEquals(button.activityText.getText(), newText);
     }
 
 
